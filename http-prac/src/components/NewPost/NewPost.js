@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './NewPost.css';
+import axios from "axios";
 
 class NewPost extends Component {
     state = {
@@ -8,6 +9,22 @@ class NewPost extends Component {
         content: '',
         author: 'Max'
     }
+
+    submitHandler = ()=>{
+        axios.post('https://http-prac-2cebd.firebaseio.com/post.json', {
+            title:this.state.title,
+            content:this.state.content,
+            author:this.state.author
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+    
+}
 
     render () {
         return (
@@ -22,7 +39,7 @@ class NewPost extends Component {
                     <option value="Max">Max</option>
                     <option value="Manu">Manu</option>
                 </select>
-                <button>Add Post</button>
+                <button onClick={this.submitHandler}>Add Post</button>
             </div>
         );
     }
