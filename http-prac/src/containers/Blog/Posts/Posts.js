@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Post from "../../../components/Post/Post";
-import FullPost from "../FullPost/FullPost";
-import NewPost from "../NewPost/NewPost";
+
 import axios from "axios";
 import "./Post.css";
 
