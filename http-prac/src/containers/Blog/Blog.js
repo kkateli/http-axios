@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Blog.css";
 import Posts from "../Blog/Posts/Posts";
-import {Route, Link} from "react-router-dom";
+import {Route, NavLink} from "react-router-dom";
 import FullPost from "../Blog/FullPost/FullPost";
 import NewPost from "../Blog/NewPost/NewPost";
 
@@ -18,13 +18,13 @@ class Blog extends Component {
                 <ul>
                   <li>
                   {/* to taks an object */}
-                    <Link to={{pathname:"/"}}>Home</Link> 
+                    <NavLink to={{pathname:"/"}}>Home</NavLink> 
                   </li>
                   <li>
-                    <Link to={{pathname:"/new-post"}}>New Post</Link>
+                    <NavLink to={{pathname:"/new-post"}}>New Post</NavLink>
                   </li>
                   <li>
-                      <Link to={{pathname:"/full-post"}}>Full Post</Link>
+                      <NavLink to={{pathname:"/full-post"}}>Full Post</NavLink>
                   </li>
                 </ul>
               </nav>

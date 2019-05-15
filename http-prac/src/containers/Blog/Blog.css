@@ -20,7 +20,9 @@
 
 }
 
-.Blog a:hover{
+/* .active is a property from NavLink */
+.Blog a:hover,
+.Blog a .active{
 color: #fa923f;
 border:solid 1px black;
 }
