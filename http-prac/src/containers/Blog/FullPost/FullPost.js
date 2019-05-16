@@ -1,27 +1,39 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
 import "./FullPost.css";
 
 class FullPost extends Component {
   state = {
     loadedPost: null
   };
-  componentDidUpdate() {
-    if (this.props.id) {
+
+  componentDidMount() {
+    console.log(this.props);
+    if (this.props.match.params.id) {
       if (
         !this.state.loadedPost ||
-        (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
+        (this.state.loadedPost &&
+          this.state.loadedPost.id !== this.props.match.params.id)
       )
         axios
-          .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
+          .get(
+            "https://jsonplaceholder.typicode.com/posts/" +
+              this.props.match.params.id
+          )
           .then(response => {
             this.setState({
               loadedPost: response.data
             });
           });
     }
-  }
+    
+
+   }
+      
+    
+  
 
   clickDeleteHandler = (id) => {
     if (id) {
@@ -40,6 +52,7 @@ class FullPost extends Component {
         });
     }
   };
+
   render() {
     let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
     if (this.props.id) {

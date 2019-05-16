@@ -23,17 +23,19 @@ class Blog extends Component {
                   <li>
                     <NavLink to={{pathname:"/new-post"}}>New Post</NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                       <NavLink to={{pathname:"/full-post"}}>Full Post</NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
             </header>
             
             {/* <Route path = "/new-post" exact render = {()=><h1>Home1</h1>}/> */}
             <Route path="/" exact component={Posts}  />
+            
             <Route path="/new-post" exact component ={NewPost} />
-            <Route path="/full-post" exact component = {FullPost}/>
+            {/* NOTE  */}
+            <Route path="/:id" exact component = {FullPost}/>
 
           </div>
         
