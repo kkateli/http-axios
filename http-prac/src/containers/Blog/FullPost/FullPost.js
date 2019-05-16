@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-
 import "./FullPost.css";
 
 class FullPost extends Component {
@@ -15,7 +14,7 @@ class FullPost extends Component {
       if (
         !this.state.loadedPost ||
         (this.state.loadedPost &&
-          this.state.loadedPost.id !== this.props.match.params.id)
+          this.state.loadedPost.id !== parseInt(this.props.match.params.id))
       )
         axios
           .get(
@@ -28,14 +27,9 @@ class FullPost extends Component {
             });
           });
     }
-    
+  }
 
-   }
-      
-    
-  
-
-  clickDeleteHandler = (id) => {
+  clickDeleteHandler = id => {
     if (id) {
       axios
         .delete(
@@ -60,13 +54,16 @@ class FullPost extends Component {
     }
 
     if (this.state.loadedPost) {
-      console.log(this.state.loadedPost); //works
+      console.log(this.state.loadedPost);
       post = (
         <div className="FullPost">
           <h1>{this.state.loadedPost.title}</h1>
           <p>{this.state.loadedPost.body}</p>
           <div className="Edit">
-            <button className="Delete" onClick={()=>this.clickDeleteHandler(this.state.loadedPost.id)}>
+            <button
+              className="Delete"
+              onClick={() => this.clickDeleteHandler(this.state.loadedPost.id)}
+            >
               Delete
             </button>
           </div>
